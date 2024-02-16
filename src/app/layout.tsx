@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="font-manrope h-screen flex flex-col justify-between">{children}</body>
+      <body className="font-manrope flex flex-col">{children}</body>
     </html>
   );
 }
