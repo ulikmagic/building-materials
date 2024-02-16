@@ -17,9 +17,16 @@ const config: Config = {
         'opacity-black': '#5D6066',
         line: '#E8E9EA',
         red: '#f06359',
+        'black-opacity': 'rgba(0, 0, 0, 0.54)',
       },
       fontFamily: {
         manrope: ['Manrope', 'Arial', 'sans-serif'],
+      },
+      fontSize: {
+        'h2': '34px'
+      },
+      boxShadow: {
+        cart: '0px 10px 10px 0px #3610A666',
       },
       container: {
         padding: '15px',

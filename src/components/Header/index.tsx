@@ -7,7 +7,7 @@ import Link from 'next/link'
 const Header = () => (
   <header>
     <UpHeader />
-    <nav className='py-4 border-b border-line'>
+    <nav className='py-4 border-b-2 border-line'>
       <div className='container flex justify-between items-center'>
         <Logo className="w-32 sm:w-44" />
         <Link href='/catalog'>
