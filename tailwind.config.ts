@@ -15,7 +15,8 @@ const config: Config = {
         grey: '#F6F6F6',
         dark: '#2F323A',
         'opacity-black': '#5D6066',
-        line: '#E8E9EA'
+        line: '#E8E9EA',
+        red: '#f06359',
       },
       fontFamily: {
         manrope: ['Manrope', 'Arial', 'sans-serif'],

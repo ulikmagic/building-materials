@@ -10,13 +10,13 @@ const FooterTop = () => (
     <div className='flex flex-col items-center gap-3 sm:items-start'>
       <LogoIcon className="w-36 sm:w-44" />
       <div className='flex gap-2'>
-        <PointIcon />
+        <PointIcon className="text-yellow" />
         <p className='font-medium text-md'>Москва, ул. Камушкина 10</p>
       </div>
     </div>
-    <ul className='flex flex-col gap-1.5 sm:gap-0'>
+    <ul className='flex flex-col gap-1.5 sm:gap-px'>
       <li className='flex gap-1 items-center'>
-        <MailIcon className="w-5 h-5" />
+        <MailIcon className="w-5 h-5 text-red" />
         <p className='font-medium'>acusize@gmail.com</p>
       </li>
       <li className='flex gap-1 items-center'>
