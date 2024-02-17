@@ -1,15 +1,16 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Catalog from "./components/Catalog";
+import Catalog from "./components/Catalog/Catalog";
+import { NextPage } from "next";
 
-export default function Home() {
-  return (
-    <>
-      <Header />
-      <main className="flex-grow">
-        <Catalog />
-      </main>
-      <Footer />
-    </>
-  );
-}
+const Home: NextPage = () => (
+  <>
+    <Header />
+    <main className="flex-grow">
+      <Catalog />
+    </main>
+    <Footer />
+  </>
+);
+
+export default Home

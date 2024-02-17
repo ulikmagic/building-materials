@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import LogoIcon from '@/assets/icons/logo.svg'
 import PointIcon from '@/assets/icons/point.svg'
 import TelegramIcon from '@/assets/icons/telegram.svg'
 import WhatsappIcon from '@/assets/icons/whatsapp.svg'
 import MailIcon from '@/assets/icons/mail.svg'
 
-const FooterTop = () => (
+const FooterTop: FC = () => (
   <div className='py-8 text-line flex flex-col justify-between items-center text-center gap-3 sm:gap-0 sm:text-left sm:items-start sm:flex-row'>
     <div className='flex flex-col items-center gap-3 sm:items-start'>
       <LogoIcon className="w-36 sm:w-44" />

@@ -1,12 +1,12 @@
 'use client'
 
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
 const items: number[] = [1, 2, 3]
 const widthItems: string[] = ['w-2/5', 'w-4/5', 'w-3/5']
 
-const Catalog = () => {
+const Catalog: FC = () => {
   const [onHover, setOnHover] = useState<boolean>(false)
 
   return (

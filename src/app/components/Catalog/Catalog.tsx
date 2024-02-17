@@ -1,8 +1,8 @@
 import { catalogs } from '@/constants/catalogs'
-import React from 'react'
+import React, { FC } from 'react'
 import Cart from './components/Cart'
 
-const Catalog = () => (
+const Catalog: FC = () => (
   <section className='py-6 text-black'>
     <div className="container">
       <div className='text-center'>

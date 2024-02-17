@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import PointIcon from '@/assets/icons/point.svg'
 import Link from 'next/link'
 
-const UpHeader = () => (
+const UpHeader: FC = () => (
   <nav className='bg-grey py-3'>
     <div className="container text-opacity-black flex justify-between text-[15px]">
       <Link href="/contacts" className='flex items-center gap-2 hover:text-yellow'>
