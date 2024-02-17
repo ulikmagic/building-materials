@@ -18,6 +18,7 @@ const config: Config = {
         line: '#E8E9EA',
         red: '#f06359',
         'black-opacity': 'rgba(0, 0, 0, 0.54)',
+        dot: '#ccc'
       },
       fontFamily: {
         manrope: ['Manrope', 'Arial', 'sans-serif'],
@@ -34,6 +35,11 @@ const config: Config = {
         screens: {
           lg: '1160px'
         },
+      },
+      height: {
+        'hero-background': '220px',
+        'hero-background-lg': '420px',
+        'hero-background-sm': '300px'
       },
     },
   },
