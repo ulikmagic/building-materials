@@ -24,7 +24,7 @@ const config: Config = {
         manrope: ['Manrope', 'Arial', 'sans-serif'],
       },
       fontSize: {
-        'h2': '34px'
+        'h2': '34px',
       },
       boxShadow: {
         cart: '0px 10px 10px 0px #3610A666',
