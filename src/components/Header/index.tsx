@@ -9,7 +9,9 @@ const Header: FC = () => (
     <UpHeader />
     <nav className='py-4 border-b-2 border-line'>
       <div className='container flex justify-between items-center'>
-        <Logo className="w-32 sm:w-44" />
+        <Link href="/">
+          <Logo className="w-32 sm:w-44 cursor-pointer" />
+        </Link>
         <Link href='/catalog'>
           <Catalog />
         </Link>

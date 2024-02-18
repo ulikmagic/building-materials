@@ -1,6 +1,14 @@
+'use client'
+
 import React, { FC } from 'react'
 import PointIcon from '@/assets/icons/point.svg'
 import Link from 'next/link'
+import toast from 'react-hot-toast'
+
+const copyNumber = () => {
+  navigator.clipboard.writeText('+996 507 002 024')
+    .finally(() => toast.success('номер скопирован'))
+}
 
 const UpHeader: FC = () => (
   <nav className='bg-grey py-3'>
@@ -10,7 +18,7 @@ const UpHeader: FC = () => (
         <p>Бишкек</p>
       </Link>
       <ul className='flex flex-col-reverse items-end sm:flex-row gap-x-6 text-opacity-black'>
-        <li>+996 507 002 024</li>
+        <li onClick={copyNumber} className='cursor-pointer hover:underline'>+996 507 002 024</li>
         <li className='cursor-pointer'>
           <Link href="/contacts" className='hover:underline'>Контакты</Link>
         </li>

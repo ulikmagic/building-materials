@@ -7,9 +7,7 @@ interface PopupProps {
 }
 
 const Popup: FC<PopupProps> = ({ onClick, className }) => (
-  <div onClick={onClick} className={clsx(className)}>
-      
-  </div>
+  <div onClick={onClick} className={clsx(className, 'top-0 left-0 fixed w-full h-full bg-opacity-70 cursor-pointer bg-black')} />
 )
 
 export default Popup
