@@ -19,7 +19,10 @@ const config: Config = {
         line: '#E8E9EA',
         red: '#f06359',
         'black-opacity': 'rgba(0, 0, 0, 0.54)',
-        dot: '#ccc'
+        dot: '#ccc',
+        'blue-dark': '#102a83',
+        'blue-dark-opacity': '#0a4c8c',
+        'blue-dark-disabled': '#808080'
       },
       fontFamily: {
         manrope: ['Manrope', 'Arial', 'sans-serif'],

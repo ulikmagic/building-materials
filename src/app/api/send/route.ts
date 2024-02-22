@@ -30,8 +30,13 @@ export async function POST(request: NextRequest) {
     const result = await transport.sendMail({
       from: form.gmail,
       to: process.env.EMAIL,
-      subject: `Пришла заявка от ${form.gmail}`,
-      text: form.text,
+      subject: `Пришла заявка от ${form.name}`,
+      html: `
+        <p><strong>Имя: </strong> ${form.name}</p>
+        <p><strong>Номер телефона: </strong> ${form.number}</p>
+        ${form.gmail.length > 0 ? `<p><strong>Почта: </strong> ${form.gmail}</p>` : ''}
+        <p><strong>Текст заявки: </strong> ${form.text}</p>
+      `,
     })
 
     return Response.json({ send: true })

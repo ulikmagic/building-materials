@@ -6,7 +6,7 @@ interface DotProps {
 }
 
 const Dot: FC<DotProps> = ({ isActive }) => (
-  <div className={clsx('w-2 h-2 rounded-md mt-5', isActive ? 'bg-yellow' : 'bg-dot')}>
+  <div className={clsx('w-2 h-2 rounded-md mt-5', isActive ? 'bg-blue-dark' : 'bg-dot')}>
   </div>
 )
 
