@@ -10,7 +10,7 @@ interface CartProps extends ICatalog {
   className?: string
 }
 
-const Cart: FC<CartProps> = ({ id, image, title, url, className }) => {
+const Cart: FC<CartProps> = ({ id, image, title, className }) => {
   const router = useRouter()
   const [isHover, setIsHover] = useState<boolean>(false)
 
@@ -21,7 +21,7 @@ const Cart: FC<CartProps> = ({ id, image, title, url, className }) => {
     <div
       key={id}
       className={clsx('w-full h-48 rounded-md cursor-pointer overflow-hidden relative', className)}
-      onClick={() => router.push(url)}
+      onClick={() => router.push(`/catalog/${id}`)}
       onMouseEnter={hover}
       onMouseLeave={unhover}
       onTouchStart={hover}
@@ -37,9 +37,11 @@ const Cart: FC<CartProps> = ({ id, image, title, url, className }) => {
       </p>
       <Image
         src={image}
+        layout='fill'
+        objectFit='cover'
         alt='catalog'
         className={clsx(
-          'w-full h-full absolute top-0 left-0 duration-500 hover:scale-150',
+          'absolute top-0 left-0 duration-500 hover:scale-150',
           isHover && 'brightness-50'
         )}
       />

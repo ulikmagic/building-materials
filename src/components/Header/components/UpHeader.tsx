@@ -12,8 +12,7 @@ const copyNumber = () => {
 
 const UpHeader: FC = () => (
   <nav className='bg-blue-dark py-3'>
-    <div className="container text-white flex justify-between text-[15px]">
-      <div></div>
+    <div className="container text-white flex justify-end text-[15px]">
       <ul className='flex flex-col-reverse items-end sm:flex-row gap-x-6'>
         <li onClick={copyNumber} className='cursor-pointer hover:underline'>+996(554)-909-808</li>
         <li className='cursor-pointer'>
