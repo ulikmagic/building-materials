@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
-import LogoIcon from '@/assets/icons/logo-favicon.svg'
 
 export const metadata: Metadata = {
   title: "Компания ДН-Групп",
@@ -14,13 +13,6 @@ export const metadata: Metadata = {
     url: 'https://building-materials.vercel.app/',
     siteName: 'ДН-Групп',
     type: 'website',
-    images: [
-      {
-        url: LogoIcon,
-        width: 200,
-        height: 200,
-      },
-    ],
   }
 };
 
