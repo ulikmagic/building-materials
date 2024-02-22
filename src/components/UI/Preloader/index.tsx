@@ -1,19 +1,11 @@
 import { FC } from "react";
+import Spinner from '@/assets/spinner.gif'
+import Image from "next/image";
 
-const Preloader: FC = () => {
-  const loaderStyle = {
-    borderTopColor: '#102a83',
-    borderBottomColor: '#102a83',
-    borderRightColor: 'transparent',
-    borderLeftColor: 'transparent',
-    animation: 'spin 1.5s linear infinite',
-  };
-
-  return (
-    <div className="flex justify-center items-center">
-      <div className="loader ease-linear rounded-full border-[6px] h-14 w-14" style={loaderStyle}></div>
-    </div>
-  );
-}
+const Preloader: FC = () => (
+  <div className="flex justify-center items-center">
+    <Image src={Spinner} alt="loader" width={150} height={150} />
+  </div>
+);
 
 export default Preloader;
