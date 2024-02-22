@@ -5,8 +5,8 @@ export const runtime = 'edge'
 export const alt = 'logo'
 export const contentType = 'image/png'
 export const size = {
-  width: 350,
-  height: 350,
+  width: 200,
+  height: 200,
 }
  
 const Image = () => new ImageResponse(<LogoIcon />, size)
