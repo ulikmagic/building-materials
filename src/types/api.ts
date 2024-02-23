@@ -1,5 +1,3 @@
-import { StaticImageData } from "next/image"
-
 export interface IForm {
   gmail: string
   text: string
@@ -10,7 +8,7 @@ export interface IForm {
 export interface IProduct {
   id: number
   title: string
-  image: string | StaticImageData
+  image: string
   description: string
   catalog_type: number
 }

@@ -1,11 +1,15 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FC, useEffect } from 'react'
+import { FC, useContext } from 'react'
+import { AuthContext, IAuthConfig } from '..'
+import { LocalStorage } from '@/utils/localStorage'
 
 interface MenuProps {
   isActive: boolean
   close: () => void
+  openAuthModal: () => void
+  openProductModal: () => void
 }
 
 const links = [
@@ -26,10 +30,16 @@ const links = [
   },
 ]
 
-const Menu: FC<MenuProps> = ({ isActive, close }) => {
+const Menu: FC<MenuProps> = ({ isActive, close, openAuthModal, openProductModal }) => {
   const pathname = usePathname()
+  const { isAuth, setIsAuth } = useContext(AuthContext) as IAuthConfig
 
-  useEffect(() => console.log(pathname), [pathname])
+  const exit = () => {
+    close()
+    setIsAuth(false)
+    LocalStorage.setData(false, 'isAuth')
+  }
+
   return (
     <nav
       className={clsx(
@@ -49,6 +59,41 @@ const Menu: FC<MenuProps> = ({ isActive, close }) => {
             </Link>
           </li>  
         )}
+        {isAuth
+          ? (
+            <>
+              <li>
+                <p
+                  onClick={() => {
+                    openProductModal()
+                    close()
+                  }}
+                  className='hover:underline hover:text-blue-dark cursor-pointer'
+                >
+                  Добавить товар
+                </p>
+              </li>
+              <li>
+                <p
+                  onClick={exit}
+                  className='hover:underline hover:text-blue-dark cursor-pointer'
+                >
+                  Выйти
+                </p>
+              </li>
+            </>
+          )
+          : (
+            <li>
+              <p
+                onClick={() => {openAuthModal(), close()}}
+                className='hover:underline hover:text-blue-dark cursor-pointer'
+              >
+                Админ панель
+              </p>
+            </li>
+          )
+        }
       </ul>
     </nav>
   )

@@ -1,15 +1,34 @@
 'use client'
 
-import React, { FC, useState } from 'react'
+import React, { FC, createContext, useEffect, useState } from 'react'
 import UpHeader from './components/UpHeader'
 import Logo from '@/assets/icons/logo.svg'
 import Link from 'next/link'
 import Burger from '../UI/Burger'
 import Popup from '../UI/Popup'
 import Menu from './components/Menu'
+import { LocalStorage } from '@/utils/localStorage'
+import AuthModal from './components/AuthModal'
+import ProductModal from './components/ProductModal'
+
+export interface IAuthConfig {
+ isAuth: boolean
+ setIsAuth: (status: boolean) => void  
+}
+
+export const AuthContext = createContext<IAuthConfig | null>(null);
 
 const Header: FC = () => {
   const [isMenu, setIsMenu] = useState<boolean>(false)
+  const [isAuth, setIsAuth] = useState<boolean>(false)
+  const [authModal, setAuthModal] = useState<boolean>(false)
+  const [productModal, setProductModal] = useState<boolean>(false)
+
+  useEffect(() => {
+    const data = LocalStorage.getData('isAuth') || null
+    setIsAuth(Boolean(data))
+  }, [])
+
   return (
     <header>
       <UpHeader />
@@ -22,8 +41,27 @@ const Header: FC = () => {
           <Burger onClick={() => setIsMenu(!isMenu)} className='z-50 lg:z-0' isActive={isMenu} />
         </div>
       </nav>
-      {isMenu && <Popup onClick={() => setIsMenu(false)} className='z-40' />}
-      <Menu isActive={isMenu} close={() => setIsMenu(false)} />
+      <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+        {isMenu && <Popup onClick={() => setIsMenu(false)} className='z-40' />}
+        {authModal && (
+          <>
+            <Popup onClick={() => setAuthModal(false)} className='z-40' />
+            <AuthModal close={() => setAuthModal(false)} />
+          </>
+        )}
+        {productModal && (
+          <>
+            <Popup onClick={() => setProductModal(false)} className='z-40' />
+            <ProductModal close={() => setProductModal(false)} />
+          </>
+        )}
+        <Menu
+          isActive={isMenu}
+          close={() => setIsMenu(false)}
+          openAuthModal={() => setAuthModal(true)}
+          openProductModal={() => setProductModal(true)}
+        />
+      </AuthContext.Provider>
     </header>
 )}
 
