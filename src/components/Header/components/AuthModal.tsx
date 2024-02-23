@@ -5,8 +5,9 @@ import Preloader from '@/components/UI/Preloader'
 import { InputEvent } from '@/types/event'
 import { AuthContext, IAuthConfig } from '..'
 import { LocalStorage } from '@/utils/localStorage'
+import axios from 'axios'
 
-interface IAuthForm {
+export interface IAuthForm {
   username: string
   password: string
 }
@@ -37,18 +38,22 @@ const AuthModal: FC<AuthModalProps> = ({ close }) => {
       return setError(errors)
     }
     setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-
-      if(username === form.username && password === form.password) {
-        setIsAuth(true)
-        LocalStorage.setData(true, 'isAuth')
-        close()
-        toast.success('Авторизация прошла успешно')
-      } else {
-        toast.error('Логин и пароль не верен!')
-      }
-    }, 1000)
+    axios.post('/api/auth', form)
+      .then(({ data }) => {
+        setIsLoading(false)
+        if(data.auth) {
+          setIsAuth(true)
+          LocalStorage.setData(true, 'isAuth')
+          close()
+          toast.success('Авторизация прошла успешно')
+        } else {
+          toast.error('Логин и пароль не верен!')
+        }
+      })
+      .catch(() => {
+        setIsLoading(false)
+        toast.error('Произошла ошибка!')
+      })
   }
 
   return (
@@ -90,7 +95,7 @@ const AuthModal: FC<AuthModalProps> = ({ close }) => {
               </div>
               <button
                 onClick={sendRequest}
-                className='w-full py-3 text-white mt-2 hover:bg-blue-dark-opacity cursor-pointer font-medium bg-blue-dark mt-10'
+                className='w-full py-3 text-white hover:bg-blue-dark-opacity cursor-pointer font-medium bg-blue-dark mt-6'
               >
                 Отправить
               </button>

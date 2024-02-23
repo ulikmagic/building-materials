@@ -12,7 +12,7 @@ const Info: FC<InfoProps> = ({ product }) => {
   return (
     <section className='py-8 text-dark'>
       <div className='container flex gap-10 flex-col lg:flex-row'>
-        <div className='relative w-[300px] h-[300px] sm:h-96 sm:w-96 m-auto lg:min-w-96'>
+        <div className='relative w-[300px] h-[300px] mx-auto lg:m-0 sm:h-96 sm:w-96 lg:min-w-96'>
           <Image
             src={product.image}
             alt='product'
