@@ -1,5 +1,5 @@
 import { ICatalog, catalogs } from '@/constants/catalogs'
-import { IProduct } from '@/constants/mock'
+import { IProduct } from '@/types/api'
 import Image from 'next/image'
 import React, { FC } from 'react'
 

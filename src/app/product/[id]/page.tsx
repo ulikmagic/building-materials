@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import React from 'react'
 import Info from './components/Info'
 import Empty from './components/Empty'
-import { IProduct, products } from '@/constants/mock'
+import { getProducts } from '@/utils/api'
 
 interface ProductProps {
   params: {
@@ -10,10 +10,11 @@ interface ProductProps {
   }
 }
 
-const Product: NextPage<ProductProps> = ({ params }) => {
-  const isProduct: IProduct | null = products.find(item => item.id === +params.id) || null
+const Product: NextPage<ProductProps> = async ({ params }) => {
+  const products = await getProducts()
+  const current = products.find((item: any) => item.id === +params.id)
 
-  return isProduct ? <Info product={isProduct} /> : <Empty />
+  return current ? <Info product={current} /> : <Empty />
 }
 
 export default Product

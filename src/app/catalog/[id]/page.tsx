@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Hero from './components/Hero'
 import List from './components/List'
 import { ICatalog, catalogs } from '@/constants/catalogs'
-import { products } from '@/constants/mock'
+import { getProducts } from '@/utils/api'
 
 interface ProductProps {
   params: {
@@ -12,14 +12,18 @@ interface ProductProps {
 
 export type ICurrentCatalog = ICatalog | null
 
-const Product: NextPage<ProductProps> = ({ params }) => {
-  const current: ICurrentCatalog = catalogs.find(item => item.id === +params.id) || null
+const Products: NextPage<ProductProps> = async ({ params }) => {
+  const id = +params.id
+  const response = await getProducts()
+  const products: any[] = response.filter((item: any) => item?.catalog_type === id)
+  const catalog: ICurrentCatalog = catalogs.find(item => item.id === id) || null
+
   return (
     <section className='py-4'>
-      <Hero catalog={current} />
+      <Hero catalog={catalog} />
       <List products={products} />
     </section>
   )
 }
 
-export default Product
+export default Products
