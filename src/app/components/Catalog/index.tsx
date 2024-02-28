@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import Cart from './components/Cart'
 
 const Catalog: FC = () => (
-  <section className='py-10 text-black'>
+  <section className='py-10 text-black bg-[#e8e8e8]'>
     <div className="container">
       <div className='text-center'>
         <h2 className='font-semibold text-h2'>Каталоги</h2>
