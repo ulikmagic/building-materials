@@ -22,7 +22,8 @@ const config: Config = {
         dot: '#ccc',
         'blue-dark': '#102a83',
         'blue-dark-opacity': '#0a4c8c',
-        'blue-dark-disabled': '#808080'
+        'blue-dark-disabled': '#808080',
+        'black-rgba': 'rgba(0, 0, 0, 0.54)',
       },
       fontFamily: {
         manrope: ['Manrope', 'Arial', 'sans-serif'],

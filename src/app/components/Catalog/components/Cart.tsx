@@ -27,22 +27,17 @@ const Cart: FC<CartProps> = ({ id, image, title, className }) => {
       onTouchStart={hover}
       onTouchEnd={unhover}
     >
-      <p
-        className={`
-          text-xl text-white font-bold absolute top-1/2 z-20 text-nowrap
-          left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-sm
-        `}
-      >
-        {title}
-      </p>
+      <div className='absolute w-full h-full top-1/2 z-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-center px-2'>
+        <p className='text-xl text-white font-bold shadow-sm'>{title}</p>
+      </div>
       <Image
         src={image}
         layout='fill'
         objectFit='cover'
         alt='catalog'
         className={clsx(
-          'absolute top-0 left-0 duration-500 hover:scale-150',
-          isHover && 'brightness-50'
+          'absolute top-0 left-0 w-full h-full duration-500 brightness-50 hover:scale-150',
+          isHover && 'brightness-100'
         )}
       />
     </div>  

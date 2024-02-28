@@ -1,3 +1,18 @@
+import ProductsAndAlloys from '@/assets/images/цветной прокат.png'
+import HeatingRadiators from '@/assets/images/радиаторы отопления.jpg'
+import MetalMesh from '@/assets/images/металлические сетки.jpg'
+import TechnicalGases from '@/assets/images/технические газы.jpg'
+import Fasteners from '@/assets/images/крепеж.jpeg'
+import Powders from '@/assets/images/порошок.jpg'
+import AsbestosCement from '@/assets/images/асбастоцементная.jpg'
+import StainlessSteel from '@/assets/images/нержавеющий прокат.jpg'
+import LongProducts from '@/assets/images/sortovoi01.jpg'
+import SpecialSteels from '@/assets/images/специальные стали.jpg'
+import MetallurgicalRawMaterials from '@/assets/images/металлургическая сырье.jpg'
+import WeldingMaterials from '@/assets/images/сварочные материалы.jpg'
+import Hardware from '@/assets/images/метизы.jpg'
+import CableProduction from '@/assets/images/кабельная продукция.png'
+
 export interface ICatalog {
   id: number
   title: string
@@ -8,7 +23,7 @@ export const catalogs: ICatalog[] = [
   {
     "id": 1,
     "title": "Цветной прокат и сплавы",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/цветно.jpg",
+    "image": ProductsAndAlloys,
   },
   {
     "id": 2,
@@ -23,57 +38,57 @@ export const catalogs: ICatalog[] = [
   {
     "id": 4,
     "title": "Металлические сетки",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/metalsetka.jpg",
+    "image": MetalMesh,
   },
   {
     "id": 5,
     "title": "Радиаторы отопления",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/otopleniya.jpg",
+    "image": HeatingRadiators,
   },
   {
     "id": 6,
     "title": "Технические газы и оборудование",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/gazy.jpg",
+    "image": TechnicalGases,
   },
   {
     "id": 7,
     "title": "Крепежные элементы",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/krepelem.jpg",
+    "image": Fasteners,
   },
   {
     "id": 8,
     "title": "Порошки Металлов",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/poroshki.jpg",
+    "image": Powders,
   },
   {
     "id": 9,
     "title": "Асбестоцемент",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/asbectozment.jpg",
+    "image": AsbestosCement,
   },
   {
     "id": 10,
     "title": "Нержавеющий прокат",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/nerjav-1.jpg",
+    "image": StainlessSteel,
   },
   {
     "id": 11,
     "title": "Сортовой прокат",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/Sortovoy_prokat.jpg",
+    "image": LongProducts,
   },
   {
     "id": 12,
     "title": "Специальные стали",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/stalnoy-1.jpg",
+    "image": SpecialSteels,
   },
   {
     "id": 13,
     "title": "Провода и Кабельная продукция",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/kabel.jpg",
+    "image": CableProduction,
   },
   {
     "id": 14,
     "title": "Металлургическое сырье",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/syrie.jpg",
+    "image": MetallurgicalRawMaterials,
   },
   {
     "id": 15,
@@ -83,7 +98,7 @@ export const catalogs: ICatalog[] = [
   {
     "id": 16,
     "title": "Сварочные материалы",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/svarochnye.jpg",
+    "image": WeldingMaterials,
   },
   {
     "id": 17,
@@ -123,7 +138,7 @@ export const catalogs: ICatalog[] = [
   {
     "id": 24,
     "title": "Метизы",
-    "image": "https://emk.kg/wp-content/uploads/2021/01/metiz.jpg",
+    "image": Hardware,
   },
   {
     "id": 25,
