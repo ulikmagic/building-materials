@@ -36,8 +36,8 @@ const Cart: FC<CartProps> = ({ id, image, title, className }) => {
         objectFit='cover'
         alt='catalog'
         className={clsx(
-          'absolute top-0 left-0 w-full h-full duration-500 brightness-50 hover:scale-150',
-          isHover && 'brightness-100'
+          'absolute top-0 left-0 w-full h-full duration-500 brightness-50',
+          isHover && 'brightness-105 scale-150'
         )}
       />
     </div>  
