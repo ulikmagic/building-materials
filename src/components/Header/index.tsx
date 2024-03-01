@@ -8,8 +8,9 @@ import Burger from '../UI/Burger'
 import Popup from '../UI/Popup'
 import Menu from './components/Menu'
 import { LocalStorage } from '@/utils/localStorage'
-import AuthModal from './components/AuthModal'
+import AuthModal, { IAuthForm } from './components/AuthModal'
 import ProductModal from './components/ProductModal'
+import axios from 'axios'
 
 export interface IAuthConfig {
  isAuth: boolean
@@ -25,8 +26,17 @@ const Header: FC = () => {
   const [productModal, setProductModal] = useState<boolean>(false)
 
   useEffect(() => {
-    const data = LocalStorage.getData('isAuth') || null
-    setIsAuth(Boolean(data))
+    const data: IAuthForm | null = LocalStorage.getData('isAuth') || null
+    
+    if(data === null) return
+
+    axios.post('/api/auth', data)
+      .then(({ data }) => {
+        if(data.auth) {
+          setIsAuth(true)
+          LocalStorage.setData(data, 'isAuth')
+        }
+      })
   }, [])
 
   return (

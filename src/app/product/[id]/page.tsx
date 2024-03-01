@@ -11,9 +11,17 @@ interface ProductProps {
   }
 }
 
+export async function generateStaticParams() {
+  const response = await getProducts() as IProduct[]
+  const products = response.map(item => ({ id: `${ item.id}` }))
+ 
+  return products
+}
+
+
 const Product: NextPage<ProductProps> = async ({ params }) => {
-  const products = await getProducts()
-  const current = products.find((item: any) => item.id === +params.id)
+  const products = await getProducts() as IProduct[]
+  const current: IProduct | null = products?.find((item: any) => item.id === +params.id) || null
 
   return current ? <Info product={current as IProduct} /> : <Empty />
 }

@@ -12,6 +12,12 @@ interface ProductProps {
 
 export type ICurrentCatalog = ICatalog | null
 
+export function generateStaticParams() {
+  const products = catalogs.map(item => ({ id: `${item.id}` })) 
+ 
+  return products
+}
+
 const Products: NextPage<ProductProps> = async ({ params }) => {
   const id = +params.id
   const response = await getProducts()

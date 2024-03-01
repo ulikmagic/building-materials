@@ -2,6 +2,17 @@
 const nextConfig = {
   images: {
     domains: ['emk.kg'],
+    unoptimized: true
+  },
+  output: 'export',
+  publicRuntimeConfig: {
+
+  },
+  env: {
+    TOKEN: 'dvfc sskr vsjf ittj',
+    EMAIL: 'dn.group.kgz@gmail.com',
+    USERNAME: 'nurs',
+    PASSWORD: 'admin1204'
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>

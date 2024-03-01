@@ -18,9 +18,6 @@ interface AuthModalProps {
 
 const required: (keyof IAuthForm)[] = ['username', 'password']
 
-const password = 'admin1204'
-const username = 'nurs'
-
 const AuthModal: FC<AuthModalProps> = ({ close }) => {
   const [form, setForm] = useState<IAuthForm>({ username: "", password: "" })
   const [error, setError] = useState<string[]>([])
@@ -43,7 +40,7 @@ const AuthModal: FC<AuthModalProps> = ({ close }) => {
         setIsLoading(false)
         if(data.auth) {
           setIsAuth(true)
-          LocalStorage.setData(true, 'isAuth')
+          LocalStorage.setData(form, 'isAuth')
           close()
           toast.success('Авторизация прошла успешно')
         } else {
