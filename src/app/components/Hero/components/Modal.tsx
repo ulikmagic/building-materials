@@ -4,6 +4,7 @@ import React, { FC, useState } from 'react'
 import toast from 'react-hot-toast'
 import { InputEvent } from '@/types/event'
 import Preloader from '@/components/UI/Preloader'
+import emailjs from '@emailjs/browser'
 
 interface ModalProps {
   close: () => void
@@ -31,19 +32,19 @@ const Modal: FC<ModalProps> = ({ close }) => {
 
   const request = async () => {
     setIsLoading(true)
-    // sendRequestEmail(form)
-    //   .then((data) => {
-    //     if(data.send) {
-    //       toast.success('Заявка отправлена!')
-    //     } else {
-    //       toast.error('Произошла ошибка!')
-    //     }
-    //   })
-    //   .catch(() => toast.error('Произошла ошибка!'))
-    //   .finally(() => {
-    //     setIsLoading(false)
-    //     close()
-    //   })
+    const request = {
+      from_name: form.name,
+      from_number: form.number,
+      from_text: form.text,
+      from_gmail: form.gmail.length > 0 ? form.gmail : 'Неизвестно',
+    }
+    emailjs.send('service_goc72lm', 'template_jvol6m2', request, { publicKey: 'MHJAclaliTS5C7Mil' })
+      .then(() => toast.success('Заявка отправлена!'))
+      .catch(() => toast.error('Произошла ошибка!'))
+      .finally(() => {
+        setIsLoading(false)
+        close()
+      })
   }
 
   const sendForm = () => {
