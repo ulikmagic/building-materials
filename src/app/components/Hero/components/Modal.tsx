@@ -1,5 +1,4 @@
 import { IForm } from '@/types/api'
-import axios from 'axios'
 import clsx from 'clsx'
 import React, { FC, useState } from 'react'
 import toast from 'react-hot-toast'
@@ -32,19 +31,19 @@ const Modal: FC<ModalProps> = ({ close }) => {
 
   const request = async () => {
     setIsLoading(true)
-    axios.post('/api/send', form)
-      .then(({ data }) => {
-        if(data.send) {
-          toast.success('Заявка отправлена!')
-        } else {
-          toast.error('Произошла ошибка!')
-        }
-      })
-      .catch(() => toast.error('Произошла ошибка!'))
-      .finally(() => {
-        setIsLoading(false)
-        close()
-      })
+    // sendRequestEmail(form)
+    //   .then((data) => {
+    //     if(data.send) {
+    //       toast.success('Заявка отправлена!')
+    //     } else {
+    //       toast.error('Произошла ошибка!')
+    //     }
+    //   })
+    //   .catch(() => toast.error('Произошла ошибка!'))
+    //   .finally(() => {
+    //     setIsLoading(false)
+    //     close()
+    //   })
   }
 
   const sendForm = () => {

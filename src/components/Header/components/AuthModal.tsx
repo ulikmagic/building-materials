@@ -5,21 +5,18 @@ import Preloader from '@/components/UI/Preloader'
 import { InputEvent } from '@/types/event'
 import { AuthContext, IAuthConfig } from '..'
 import { LocalStorage } from '@/utils/localStorage'
-import axios from 'axios'
-
-export interface IAuthForm {
-  username: string
-  password: string
-}
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { AUTH } from '@/config/firebase'
+import { IAuthForm, AUTH_ERRORS } from '@/types/auth'
 
 interface AuthModalProps {
   close: () => void
 }
 
-const required: (keyof IAuthForm)[] = ['username', 'password']
+const required: (keyof IAuthForm)[] = ['email', 'password']
 
 const AuthModal: FC<AuthModalProps> = ({ close }) => {
-  const [form, setForm] = useState<IAuthForm>({ username: "", password: "" })
+  const [form, setForm] = useState<IAuthForm>({ email: "", password: "" })
   const [error, setError] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { setIsAuth } = useContext(AuthContext) as IAuthConfig
@@ -35,22 +32,25 @@ const AuthModal: FC<AuthModalProps> = ({ close }) => {
       return setError(errors)
     }
     setIsLoading(true)
-    axios.post('/api/auth', form)
-      .then(({ data }) => {
-        setIsLoading(false)
-        if(data.auth) {
-          setIsAuth(true)
-          LocalStorage.setData(form, 'isAuth')
-          close()
-          toast.success('Авторизация прошла успешно')
+
+    signInWithEmailAndPassword(AUTH, form.email, form.password)
+      .then((data) => {
+        setIsAuth(true)
+        LocalStorage.setData(form, 'isAuth')
+        close()
+        toast.success('Авторизация прошла успешно')
+      })
+      .catch((error) => {
+        if(error.code === AUTH_ERRORS.invalid_email) {
+          toast.error('Не валидный email!')  
+        }
+        else if(error.code === AUTH_ERRORS.auth_invalid_credential) {
+          toast.error('Логин и пароль не верен!') 
         } else {
-          toast.error('Логин и пароль не верен!')
+          toast.error('Произошла ошибка!')
         }
       })
-      .catch(() => {
-        setIsLoading(false)
-        toast.error('Произошла ошибка!')
-      })
+      .finally(() => setIsLoading(false))
   }
 
   return (
@@ -70,20 +70,20 @@ const AuthModal: FC<AuthModalProps> = ({ close }) => {
             <div className='mt-5 w-10/12 mx-auto'>
               <div className='flex flex-col gap-5'>
                 <div className='flex flex-col gap-1'>
-                  <label className={getLabelClass('username')}>Логин</label>
+                  <label className={getLabelClass('email')}>Email</label>
                   <input
-                    value={form.username}
-                    type="text"
-                    placeholder='Ваш логин'
-                    onChange={(e: InputEvent) => changeForm('username', e.target.value)}
-                    className={clsx(error.includes('username') && 'border-b border-red')}
+                    value={form.email}
+                    type="email"
+                    placeholder='Ваш email'
+                    onChange={(e: InputEvent) => changeForm('email', e.target.value)}
+                    className={clsx(error.includes('email') && 'border-b border-red')}
                   />
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <label className={getLabelClass('username')}>Пароль</label>
+                  <label className={getLabelClass('password')}>Пароль</label>
                   <input
                     value={form.password}
-                    type="text"
+                    type="password"
                     placeholder='Ваш пароль'
                     onChange={(e: InputEvent) => changeForm('password', e.target.value)}
                     className={clsx(error.includes('password') && 'border-b border-red')}

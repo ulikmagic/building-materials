@@ -4,6 +4,8 @@ import { usePathname } from 'next/navigation'
 import { FC, useContext } from 'react'
 import { AuthContext, IAuthConfig } from '..'
 import { LocalStorage } from '@/utils/localStorage'
+import { signOut } from 'firebase/auth'
+import { AUTH } from '@/config/firebase'
 
 interface MenuProps {
   isActive: boolean
@@ -34,10 +36,11 @@ const Menu: FC<MenuProps> = ({ isActive, close, openAuthModal, openProductModal 
   const pathname = usePathname()
   const { isAuth, setIsAuth } = useContext(AuthContext) as IAuthConfig
 
-  const exit = () => {
+  const exit = async () => {
     close()
     setIsAuth(false)
-    LocalStorage.setData(false, 'isAuth')
+    LocalStorage.clear()
+    await signOut(AUTH)
   }
 
   return (

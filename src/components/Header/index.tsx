@@ -8,9 +8,11 @@ import Burger from '../UI/Burger'
 import Popup from '../UI/Popup'
 import Menu from './components/Menu'
 import { LocalStorage } from '@/utils/localStorage'
-import AuthModal, { IAuthForm } from './components/AuthModal'
+import AuthModal from './components/AuthModal'
 import ProductModal from './components/ProductModal'
-import axios from 'axios'
+import { AUTH } from '@/config/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { IAuthForm } from '@/types/auth'
 
 export interface IAuthConfig {
  isAuth: boolean
@@ -30,13 +32,8 @@ const Header: FC = () => {
     
     if(data === null) return
 
-    axios.post('/api/auth', data)
-      .then(({ data }) => {
-        if(data.auth) {
-          setIsAuth(true)
-          LocalStorage.setData(data, 'isAuth')
-        }
-      })
+    signInWithEmailAndPassword(AUTH, data.email, data.password)
+      .then(() => setIsAuth(true))
   }, [])
 
   return (
